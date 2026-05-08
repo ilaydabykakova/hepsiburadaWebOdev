@@ -49,4 +49,5 @@ export class CartPage {
     const deleteBtn = productRow.locator('a[aria-label="Sepetten Çıkar"]');
     await expect(deleteBtn).toBeVisible();
   }
+  
 }

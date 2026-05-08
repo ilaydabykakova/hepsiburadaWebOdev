@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 import { ProductDetailPage } from '../pages/ProductDetailPage';
 import { CartPage } from '../pages/CartPage';
+import { NavigateToLogin } from '../pages/NavigateToLogin';
 
 test('Hepsiburada Sepete Ürün Ekleme Testi', async ({ page }) => {
   const homePage = new HomePage(page);
@@ -14,6 +15,7 @@ test('Hepsiburada Sepete Ürün Ekleme Testi', async ({ page }) => {
   const productPage = await homePage.selectFirstProduct();
   const productDetailPage = new ProductDetailPage(productPage);
   const cartPage = new CartPage(productPage);
+  const navigateToLogin = new NavigateToLogin(productPage);
 
   // Ürün detay sayfasında sepete ekle
   await productDetailPage.addToCart();
@@ -23,4 +25,9 @@ test('Hepsiburada Sepete Ürün Ekleme Testi', async ({ page }) => {
 
   // Sepet sayfasında ürünü doğrula
   await cartPage.verifyAllProductDetails('Altınmarka ALT211 Sütlü Damla Çikolata 1Kg');
+
+  // Login sayfasına yönlen ve doğrula  
+  await navigateToLogin.goto(); 
+  await navigateToLogin.verifyLoginPage();  
+
 });
