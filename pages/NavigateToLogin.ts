@@ -13,7 +13,7 @@ export class NavigateToLogin {
   }
 
   async verifyLoginPage() { 
-    const loginText = this.page.getByText('Giriş yap');
+    const loginText = this.page.getByText('Giriş yap').first();
     await expect(loginText).toBeVisible();
     await expect(loginText).toHaveText('Giriş yap');
     

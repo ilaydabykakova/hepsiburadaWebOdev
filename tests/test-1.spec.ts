@@ -24,7 +24,12 @@ test('Hepsiburada Sepete Ürün Ekleme Testi', async ({ page }) => {
   await productDetailPage.goToCart();
 
   // Sepet sayfasında ürünü doğrula
-  await cartPage.verifyAllProductDetails('Altınmarka ALT211 Sütlü Damla Çikolata 1Kg');
+  await cartPage.verifyAllProductDetails('abnturk Çok Fonksiyonlu Mini LED Lamba Anahtarlık ve Çakmak USB Şarjlı Kamp Için Taşınabilir Tam 7 Modlu');
+  await cartPage.checkboxIsNotChecked();
+  await cartPage.checkboxIsChecked();
+  await cartPage.addOneMoreProduct();
+  await cartPage.reduceOneMoreProduct();
+
 
   // Login sayfasına yönlen ve doğrula  
   await navigateToLogin.goto(); 

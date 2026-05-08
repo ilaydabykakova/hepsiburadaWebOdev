@@ -22,7 +22,7 @@ export class HomePage {
 
   async selectFirstProduct() {
     const popupPromise = this.page.waitForEvent('popup');
-    await this.page.locator('.productCard-module_productCardRoot__Yf7qs').nth(2).click();
+    await this.page.locator('.productCard-module_productCardRoot__Yf7qs').first().click();
     return await popupPromise;
   }
 }
