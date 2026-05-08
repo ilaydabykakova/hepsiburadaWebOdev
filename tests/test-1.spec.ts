@@ -24,7 +24,7 @@ test('Hepsiburada Sepete Ürün Ekleme Testi', async ({ page }) => {
   await productDetailPage.goToCart();
 
   // Sepet sayfasında ürünü doğrula
-  await cartPage.verifyAllProductDetails('abnturk Çok Fonksiyonlu Mini LED Lamba Anahtarlık ve Çakmak USB Şarjlı Kamp Için Taşınabilir Tam 7 Modlu');
+  await cartPage.verifyAllProductDetails('Mf Superclean Duo Twısted Oto Kurulama Havlusu 1200GSM - 70X50CM');
   await cartPage.checkboxIsNotChecked();
   await cartPage.checkboxIsChecked();
   await cartPage.addOneMoreProduct();

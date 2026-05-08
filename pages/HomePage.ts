@@ -20,9 +20,18 @@ export class HomePage {
     }
   }
 
-  async selectFirstProduct() {
-    const popupPromise = this.page.waitForEvent('popup');
-    await this.page.locator('.productCard-module_productCardRoot__Yf7qs').first().click();
-    return await popupPromise;
+async selectFirstProduct() {
+  const [popup] = await Promise.all([
+    this.page.waitForEvent('popup', { timeout: 5000 }).catch(() => null),
+    this.page.locator('.productCard-module_productCardRoot__Yf7qs').first().click(),
+  ]);
+
+  if (popup) {
+    await popup.waitForLoadState('domcontentloaded');
+    return popup;
   }
+  
+  await this.page.waitForLoadState('domcontentloaded');
+  return this.page;
+}
 }
