@@ -76,17 +76,23 @@ export class CartPage {
     await expect(checkbox).toBeChecked(); 
   }
   
-  // Checkbox'ın seçili gelmediğini doğrula ve tıkla  
-  async checkboxIsNotChecked() { 
-    await this.page.locator('#selectedCheckBox').click();
-    const checkbox = this.page.locator('#selectedCheckBox');
-    await expect(checkbox).toHaveAttribute('data-test-class', 'selection-unselected');
-  }
+// Checkbox seçili → tıkla → seçimi kaldır
+async checkboxIsNotChecked() {
+  const checkbox = this.page.getByRole('checkbox').first();
+  await expect(checkbox).toBeChecked();
 
-  // Checkbox'ın seçili olduğunu doğrula ve tıkla 
-   async checkboxIsChecked() { 
-        await this.page.getByLabel('',{exact : true}).click();
-   }
+  await checkbox.click();
+  await expect(checkbox).not.toBeChecked({ timeout: 10000 });
+}
+
+// Checkbox seçili değil → tıkla → seçili yap
+async checkboxIsChecked() {
+  const checkbox = this.page.getByRole('checkbox').first();
+  await expect(checkbox).not.toBeChecked();
+
+  await checkbox.click();
+  await expect(checkbox).toBeChecked({ timeout: 10000 });
+}
 
    // Sepete bir ürün daha ekle
    async addOneMoreProduct() {

@@ -20,17 +20,20 @@ export class HomePage {
     }
   }
 
-async selectFirstProduct() {
+async selectFirstProduct(productName: string) {
+  const productLink = this.page.getByRole('link', { name: productName });
+  await productLink.first().waitFor({ state: 'visible', timeout: 15000 });
+
   const [popup] = await Promise.all([
-    this.page.waitForEvent('popup', { timeout: 5000 }).catch(() => null),
-    this.page.locator('.productCard-module_productCardRoot__Yf7qs').first().click(),
+    this.page.waitForEvent('popup', { timeout: 10000 }).catch(() => null),
+    productLink.first().click(),
   ]);
 
   if (popup) {
     await popup.waitForLoadState('domcontentloaded');
     return popup;
   }
-  
+
   await this.page.waitForLoadState('domcontentloaded');
   return this.page;
 }
