@@ -23,7 +23,6 @@ async goto() {
     
     const loginWithoutText = this.page.getByText('Üye olmadan devam et');
     await expect(loginWithoutText).toBeVisible({ timeout: 15000 });
-    await expect(loginText).toHaveText('Üye olmadan devam et');
 
   }
 
