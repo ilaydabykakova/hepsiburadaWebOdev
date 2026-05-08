@@ -8,7 +8,7 @@ export class ProductDetailPage {
   }
 
   async addToCart() {
-    await this.page.waitForTimeout(5000);
+    await this.page.waitForTimeout(2000);
     await this.page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await this.page.locator('[data-test-id="addToCart"]').waitFor({ state: 'visible', timeout: 20000 });
     await this.page.waitForFunction(() => {

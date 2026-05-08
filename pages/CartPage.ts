@@ -78,7 +78,7 @@ export class CartPage {
   
 // Checkbox seçili → tıkla → seçimi kaldır
 async checkboxIsNotChecked() {
-  const checkbox = this.page.getByRole('checkbox').first();
+  const checkbox = this.page.getByLabel('',{exact : true}).first();
   await expect(checkbox).toBeChecked();
 
   await checkbox.click();
@@ -87,7 +87,7 @@ async checkboxIsNotChecked() {
 
 // Checkbox seçili değil → tıkla → seçili yap
 async checkboxIsChecked() {
-  const checkbox = this.page.getByRole('checkbox').first();
+  const checkbox = this.page.getByLabel('',{exact : true}).first();
   await expect(checkbox).not.toBeChecked();
 
   await checkbox.click();

@@ -21,7 +21,7 @@ export class HomePage {
   }
 
 async selectFirstProduct(productName: string) {
-  const firstProduct = this.page.locator('article a[target="_blank"]').first();
+  const firstProduct = this.page.getByRole('link', { name: productName, exact: true });
   await firstProduct.waitFor({ state: 'visible', timeout: 15000 });
 
   const [popup] = await Promise.all([
