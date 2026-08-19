@@ -1,6 +1,6 @@
 # Hepsiburada Mobil - Sepet UI Testleri
 
-Hepsiburada Android uygulamasının sepet modülü için [Maestro](https://maestro.mobile.dev) ile yazılmış otomatik test senaryolarıdır.
+Hepsiburada web test ile yazılmış otomatik test senaryolarıdır.
 
 ## Testler
 
@@ -13,9 +13,3 @@ Hepsiburada Android uygulamasının sepet modülü için [Maestro](https://maest
 - Ürün detaya geri dönüş
 
 ## Çalıştırma
-
-```bash
-maestro test sepet_urun_dogrulama.yaml
-```
-
-**Gereksinimler:** Maestro CLI, Android cihaz/emülatör, Hepsiburada uygulaması
